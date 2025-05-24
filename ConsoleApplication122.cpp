@@ -1,0 +1,1645 @@
+#include<iostream>
+#include<stdio.h>
+#include<iomanip>//for setw(n).It includes features like setting the width, precision, and alignment of data displayed.
+#include<fstream>
+#include<string>
+using namespace std;
+// Function declarations for all recipes which directly return's just the recipes.
+string biryani(); string karahi(); string beef_pulao(); string chicken_pulao(); string haleem();
+string nihari(); string minced_beef(); string steak(); string terragon(); string chilli_dry();
+string manchurian(); string chowmein(); string fried_chicken(); string pasta(); string salad();
+string wraps(); string zinger_burger(); string smash_burger(); string dynamite(); string rice();
+string loaded_fries(); string kebab(); string sandwhich(); string omelette(); string pancakes();
+string nutella_pancakes(); string cheesecake(); string brownie(); string chocolate();
+string churros();
+// Function declarations for all 3 ingredient recipes which directly return's just the recipes.
+string garlicSoyChicken(); string eggFriedRice(); string tomatoGarlicPasta(); string chickenCurry();
+string omelettee(); string grilledCheeseBread(); string spicyNoodles(); string garlicButterPasta();
+string tomatoBasilBruschetta(); string cheeseGarlicToast(); string chickenMayoSandwich();
+string veggieWrap(); string cheeseOmelette(); string simpleChickenWrap(); string yogurtDip();
+string spicyChickpeas(); string honeyChilliFries(); string bbqChickenSliders(); string vegStirFry();
+string chickenQuesadillas(); string chickenLettuceWraps(); string spicyBakedPotatoes(); string cheesyPotatoBites();
+// Utility function declarations
+void option1_code(string& file_name, string& recipe);          // Function to display recipe contents
+void delete_code(string& filename);             // Function to delete recipe file
+void update_code(string& file_name, string& recipe);           // Function to update recipe
+void ing3_recipes();     //displays all the recipes with 3 ingredients
+//no function for creating a new recipe
+void menu();             // Function to display the menu of recipes
+void main_work();
+void main_work()           // Main logic handling user options
+{
+	// Welcome message
+	cout << "                                            ---------------------------------------------------------" << endl;
+	cout << setw(85) << "Welcome to my RECIPE BOOK" << endl;
+	cout << "                                            ---------------------------------------------------------" << endl;
+	cout << endl;                  // Display main menu options
+	cout << "you have following options select anyone according to your own liking" << endl;
+	cout << "1.search or read any recipe" << endl;
+	cout << "2.delete any recipe" << endl;
+	cout << "3.update or any recipe" << endl;
+	cout << "4.create a new recipe" << endl;
+	cout << "5.display the names of all recipes" << endl;
+	cout << "6.make a savory dish with 3 ingredients" << endl;
+	cout << "7.display the names of all 3 ingredient recipes" << endl;
+	cout << "8.create weekly meal(lunch,breakie,dinner)" << endl;
+	cout << "9.Display your weekly mealprep" << endl;
+	cout << "10.update or remove anything from mealprep" << endl;
+	cout << "press 1,2,3,4,5,6,7,8,9 & 10 for the tasks to be performed" << endl;
+	int choice;                    // Main menu choice
+	cin >> choice;        // Get user's choice
+	struct mealprep {
+		string days;
+		string breakie;
+		string lunch;
+		string dinner;
+	};
+	mealprep array[7];
+	string day[7] = { "monday","tuesday","wednesday","thursday","friday","saturday","sunday" };
+	for (int i = 0; i < 7; i++) {
+		array[i].days = day[i];
+	}
+	switch (choice) {
+	case 1:         // Option 1: Read/search a recipe
+	{
+		string userchoice;             // Variable to ask user if they want another recipe
+		do {
+			menu();            // Display recipe list
+
+			int recipe_name;              // Stores user's recipe choice
+			cout << "Now that you have taken a look at recipe catalog.Enter serial number of the recipe you want to be displayed" << endl;
+			cin >> recipe_name;        // Get recipe serial number from the user
+			// Each recipe name maps to its respective function and file
+			if (recipe_name == 1) {               // Check the selected recipe and display it
+				string file_name = "biryani";
+				string recipe = biryani();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 2) {
+				string file_name = "karahi";
+				string recipe = karahi();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 3) {
+				string file_name = "beef pulao";
+				string recipe = beef_pulao();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 4) {
+				string file_name = "chicken pulao";
+				string recipe = chicken_pulao();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 5) {
+				string file_name = "haleem";
+				string recipe = haleem();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 6) {
+				string file_name = "nihari";
+				string recipe = nihari();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 7) {
+				string file_name = "minced beef";
+				string recipe = minced_beef();
+				option1_code(file_name, recipe);
+			}
+
+			if (recipe_name == 8) {
+				string file_name = "moroccan chicken steak";
+				string recipe = steak();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 9) {
+				string file_name = "chicken terragon";
+				string recipe = terragon();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 10) {
+				string file_name = "chilli dry";
+				string recipe = chilli_dry();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 11) {
+				string file_name = "chicken manchurian";
+				string recipe = manchurian();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 12) {
+				string file_name = "chicken chowmein";
+				string recipe = chowmein();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 13) {
+				string file_name = "crispy fried chicken";
+				string recipe = fried_chicken();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 14) {
+				string file_name = "alfredo pasta";
+				string recipe = pasta();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 15) {
+				string file_name = "caesar salad";
+				string recipe = salad();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 16) {
+				string file_name = "chicken wraps";
+				string recipe = wraps();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 17) {
+				string file_name = "zinger burger";
+				string recipe = zinger_burger();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 18) {
+				string file_name = "smash burger";
+				string recipe = smash_burger();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 19) {
+				string file_name = "dynamite chicken";
+				string recipe = dynamite();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 20) {
+				string file_name = "singaporian rice";
+				string recipe = rice();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 21) {
+				string file_name = "loaded fries";
+				string recipe = loaded_fries();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 22) {
+				string file_name = "cheese stuffed seekh kebab";
+				string recipe = kebab();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 23) {
+				string file_name = "sandwich";
+				string recipe = sandwhich();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 24) {
+				string file_name = "omelette";
+				string recipe = omelette();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 25) {
+				string file_name = "pancakes";
+				string recipe = pancakes();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 26) {
+				string file_name = "nutella pancakes";
+				string recipe = nutella_pancakes();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 27) {
+				string file_name = "lotus biscoff cheesecake";
+				string recipe = cheesecake();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 28) {
+				string file_name = "mug brownie";
+				string recipe = brownie();
+				option1_code(file_name, recipe);
+			}
+			if (recipe_name == 29) {
+				string file_name = "dubai chocolate";
+				string recipe = chocolate();
+				option1_code(file_name, recipe);
+			}
+
+			if (recipe_name == 30) {
+				string file_name = "churros with chocolate dip";
+				string recipe = churros();
+				option1_code(file_name, recipe);
+			}
+
+			cout << "do you want another recipe?(yes or no)" << endl;// Ask user if they want to read another recipe
+			cin >> userchoice;
+		} while (userchoice == "yes");
+		break;                     // Exit the current case and break out of the switch statement
+	}
+	case 2:           // Case 2 handles the delete recipe functionality
+	{
+		menu();          // Display the menu for deleting a recipe
+		int delete_choice;
+		cout << "Which recipe you wanna delete." << endl;
+		cin >> delete_choice;// Prompt user to select the recipe they want to delete
+		// remove() attempts to delete the file at the given path full path converts the path into a format that remove function can understand i.e const char*path = "C:\\Users\\Itcomplex\\Desktop\\biryani.txt".c_str() converts the std::string=full path to a C-style string (i.e., a const char*), which is required by the remove() function. remove() returns 0 for success and non - zero for failure.
+		if (delete_choice == 1)
+		{
+			string file_name = "biryani";
+			delete_code(file_name);             // Call the delete function with the selected file name
+		}
+		if (delete_choice == 2)
+		{
+			string file_name = "karahi";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 3)
+		{
+			string file_name = "beef pulao";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 4)
+		{
+			string file_name = "chicken pulao";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 5)
+		{
+			string file_name = "haleem";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 6)
+		{
+			string file_name = "nihari";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}if (delete_choice == 7)
+		{
+			string file_name = "minced beef";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 8)
+		{
+			string file_name = "moroccan chicken steak";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 9)
+		{
+			string file_name = "chicken terragon";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 10)
+		{
+			string file_name = "chilli dry";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 11)
+		{
+			string file_name = "chicken manchurian";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 12)
+		{
+			string file_name = "chicken chowmein";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 13)
+		{
+			string file_name = "crispy fried chicken";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 14)
+		{
+			string file_name = "pasta";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 15)
+		{
+			string file_name = "salad";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 16)
+		{
+			string file_name = "wraps";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 17)
+		{
+			string file_name = "zinger_burger";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 18)
+		{
+			string file_name = "smash_burger";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 19)
+		{
+			string file_name = "dynamite";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 20)
+		{
+			string file_name = "rice";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 21)
+		{
+			string file_name = "loaded-fries";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 22)
+		{
+			string file_name = "kebab";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 23)
+		{
+			string file_name = "sandwich";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 24)
+		{
+			string file_name = "omelette";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 25)
+		{
+			string file_name = "pancakes";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 26)
+		{
+			string file_name = "nutella_pancakes";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 27)
+		{
+			string file_name = "cheesecake";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 28)
+		{
+			string file_name = "brownie";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 29)
+		{
+			string file_name = "dubai chocolate";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+		if (delete_choice == 30)
+		{
+			string file_name = "churros";
+			delete_code(file_name);// Call the delete function with the selected file name
+		}
+	}
+	break;               // Exit the current case and break out of the switch statement
+	case 3: // Case 3 handles the update recipe functionality
+	{
+		menu();               // Display the menu for updating a recipe
+		int update_recipe;               // Prompt user to select which recipe they want to update
+		cout << "which recipe you wanna update" << endl;
+		cin >> update_recipe;
+		cin.ignore();                   // To ignore any newline left in the input buffer
+		if (update_recipe == 1) {              // Check the user selection and update the corresponding recipe
+			string file_name = "biryani";         // Recipe name
+			string recipe = biryani();                 // Call function to get the updated recipe
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 2) {
+			string file_name = "karahi";
+			string recipe = karahi();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 3) {
+			string file_name = "beef pulao";
+			string recipe = beef_pulao();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 4) {
+			string file_name = "chicken pulao";
+			string recipe = chicken_pulao();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 5) {
+			string file_name = "haleem";
+			string recipe = haleem();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 6) {
+			string file_name = "nihari";
+			string recipe = nihari();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 7) {
+			string file_name = "minced beef";
+			string recipe = minced_beef();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 8) {
+			string file_name = "moroccan chicken steak";
+			string recipe = steak();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 9) {
+			string file_name = "chicken terragon";
+			string recipe = terragon();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 10) {
+			string file_name = "chilli dry";
+			string recipe = chilli_dry();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 11) {
+			string file_name = "chicken manchurian";
+			string recipe = manchurian();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 12) {
+			string file_name = "chicken chowmein";
+			string recipe = chowmein();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 13) {
+			string file_name = "crispy fried chicken";
+			string recipe = fried_chicken();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 14) {
+			string file_name = "alfredo pasta";
+			string recipe = pasta();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 15) {
+			string file_name = "caesar salad";
+			string recipe = salad();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 16) {
+			string file_name = "chicken wraps";
+			string recipe = wraps();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 17) {
+			string file_name = "zinger burger";
+			string recipe = zinger_burger();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 18) {
+			string file_name = "smash burger";
+			string recipe = smash_burger();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 19) {
+			string file_name = "dynamite chicken";
+			string recipe = dynamite();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 20) {
+			string file_name = "singaporian rice";
+			string recipe = rice();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 21) {
+			string file_name = "loaded fries";
+			string recipe = loaded_fries();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 22) {
+			string file_name = "cheese stuffed seekh kebab";
+			string recipe = kebab();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 23) {
+			string file_name = "sandwich";
+			string recipe = sandwhich();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 24) {
+			string file_name = "omelette";
+			string recipe = omelette();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 25) {
+			string file_name = "pancakes";
+			string recipe = pancakes();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 26) {
+			string file_name = "nutella stuffed pancakes";
+			string recipe = nutella_pancakes();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 27) {
+			string file_name = "lotus biscoff cheesecake";
+			string recipe = cheesecake();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 28) {
+			string file_name = "mug brownie";
+			string recipe = cheesecake();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 29) {
+			string file_name = "dubai chocolate";
+			string recipe = cheesecake();
+			update_code(file_name, recipe);
+		}
+		if (update_recipe == 30) {
+			string file_name = "churros with chocolate dip";
+			string recipe = churros();
+			update_code(file_name, recipe);
+		}
+	}
+	break;               // Exit the current case and break out of the switch statement
+	case 4:                  // Case 4 is for creating a new recipe
+	{
+		string more_choice;
+		do {
+			string new_recipe_name;
+			cout << "enter the name of recipe you wanna create" << endl;
+			cin >> new_recipe_name;                     // prompt the user to enter the name of the new recipe
+			/*When you enter something with cin, it leaves a hidden Enter key(newline) in memory.cin.ignore();
+			removes that so it doesn't mess up the next input.*/
+			cin.ignore();                   // To ignore any newline left in the input buffer after the string input
+			cout << "enter the recipe " << endl; // Ask the user to input the recipe content
+			cout << "enter done when you will be done writing your recipe" << endl;
+			string file_name = new_recipe_name;                 // Prepare the file name by appending ".txt" to the recipe name
+			fstream myfile;                // Prepare the file name by appending ".txt" to the recipe name
+			myfile.open(file_name + ".txt", ios::out);
+			if (myfile.is_open()) {                      // Check if the file was opened successfully
+				string new_actual_recipe;
+				myfile << "recipe that you have created for " << new_recipe_name << " is:" << endl;
+				while (getline(cin, new_actual_recipe))
+				{
+					// Read the entire recipe content from the user(line by line if it is nor used then only 1st word was saving in file)5
+					//even if user presses enter user can write recipes
+					myfile << new_actual_recipe << endl;
+					if (new_actual_recipe == "done")
+						break;
+				}
+				// Write the recipe details to the file
+				cout << "your recipe is stored in " << new_recipe_name << ".txt file" << endl;       // Inform the user where the recipe has been saved
+				myfile.close();               // Close the file after writing
+			}
+			else                                       // If the file could not be opened, notify the use
+				cout << "file does not open" << endl;
+			cout << "you wanna create more recipes?" << endl;
+			cin >> more_choice;
+		} while (more_choice == "yes");
+	}
+	break;              // Exit the current case and break out of the switch statement
+	case 5:    // Case 5 is for displaying the menu again
+	{
+		menu();     // Call the menu function to display the main menu to the user
+	}
+	break;          // Exit the current case and break out of the switch statement
+	case 6:
+	{
+		//This nested if - else checks for ingredients step - by - step to decide which recipe to show and save.
+		string more;
+		do {
+			cout << setw(60) << "welcome" << endl;// Welcome message for the user
+			cout << "generating recipe for garlicSoyChicken" << endl;
+			string ans;
+			int countyes = 0;
+			//option:1 garlic soy chicken
+			string array[3] = { "chicken","garlic","soy sauce" }; // First set of ingredients for Garlic Soy Chicken
+			for (int i = 0; i < 3; i++) { // Ask the user if they have each required ingredient
+				cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+				cin >> ans;
+				if (ans == "yes") {
+					countyes++;
+				}
+			}// If the user has the last ingredient, proceed (note: this logic only checks the last input)
+			if (countyes == 3)
+			{
+				cout << garlicSoyChicken();// Display the Garlic Soy Chicken recipe
+				fstream myfile;// Create and open a file to save the recipe
+				myfile.open("garlic soy chicken.txt", ios::out);
+				if (myfile.is_open()) {        // Write the recipe into the file
+					myfile << garlicSoyChicken();
+					myfile.close();
+				}
+				else {
+					cout << "unable to open file";  // Error if file cannot be opened
+				}
+			}
+			// Option 2: Egg Fried Rice
+			else {
+				int countyes = 0;
+				cout << setw(60) << "welcome" << endl;
+				cout << "generating recipe for eggFriedRice" << endl;
+				string ans;
+				string array[3] = { "rice","egg","soy sauce" };
+				for (int i = 0; i < 3; i++) {
+					cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+					cin >> ans;
+					if (ans == "yes") {
+						countyes++;
+					}
+				}
+				if (countyes == 3)
+				{
+					cout << eggFriedRice();
+					fstream myfile;
+					myfile.open("egg fried rice.txt", ios::out);
+					if (myfile.is_open()) {
+						myfile << eggFriedRice();
+						myfile.close();
+					}
+					else {
+						cout << "unable to open file";
+					}
+				}
+				else {
+					//option 3: tomato garlic pasta
+					cout << "generating recipe for tomatoGarlicPasta" << endl;
+					int countyes = 0;
+					cout << setw(60) << "welcome" << endl;
+					string ans;
+					string array[3] = { "tomato","garlic","pasta" };
+					for (int i = 0; i < 3; i++) {
+						cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+						cin >> ans;
+						if (ans == "yes") {
+							countyes++;
+						}
+					}
+					if (countyes == 3) {
+						cout << tomatoGarlicPasta();
+						fstream myfile;
+						myfile.open("tomato garlic pasta.txt", ios::out);
+						if (myfile.is_open()) {
+							cout << "file opened" << endl;
+							myfile << tomatoGarlicPasta();
+							myfile.close();
+						}
+						else {
+							cout << "unable to open file";
+						}
+					}
+					else {     //option 4: chicken curry
+						cout << "generating recipe for chickenCurry" << endl;
+						int countyes = 0;
+						cout << setw(60) << "welcome" << endl;
+						string ans;
+						string array[3] = { "chicken","onion","yogurt" };
+						for (int i = 0; i < 3; i++) {
+							cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+							cin >> ans;
+							if (ans == "yes") {
+								countyes++;
+							}
+						}
+						if (countyes == 3)
+						{
+							cout << chickenCurry();
+							fstream myfile;
+							myfile.open("chicken curry.txt", ios::out);
+							if (myfile.is_open()) {
+								myfile << chickenCurry();
+								myfile.close();
+							}
+							else {
+								cout << "unable to open file";
+							}
+						}
+						else {
+							//option:5 omelette
+							cout << "generating recipe for omelettee" << endl;
+							int countyes = 0;
+							cout << setw(60) << "welcome" << endl;
+							string ans;
+							string array[3] = { "egg","onion","green chilli" };
+							for (int i = 0; i < 3; i++) {
+								cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+								cin >> ans;
+								if (ans == "yes") {
+									countyes++;
+								}
+							}
+							if (countyes == 3)
+							{
+								cout << omelettee();
+								fstream myfile;
+								myfile.open("omelettee.txt", ios::out);
+								if (myfile.is_open()) {
+									myfile << omelettee();
+									myfile.close();
+								}
+								else {
+									cout << "unable to open file";
+								}
+							}
+							else {
+								//option:6 grilled cheese bread
+								cout << "generating recipe for grilledCheeseBread" << endl;
+								int countyes = 0;
+								string ans;
+								string array[3] = { "bread","cheese","butter" };
+								for (int i = 0; i < 3; i++) {
+									cout << "do you have " << array[i] << " ?" << endl;
+									cin >> ans;
+									if (ans == "yes") {
+										countyes++;
+									}
+								}
+								if (countyes == 3) {
+									cout << grilledCheeseBread();
+									fstream myfile;
+									myfile.open("grilled cheese bread.txt", ios::out);
+									if (myfile.is_open()) {
+										myfile << grilledCheeseBread();
+										myfile.close();
+									}
+									else {
+										cout << "unable to open file";
+									}
+								}
+								else {
+									//option:7 spicy noodles
+									cout << "generating recipe for spicyNoodles" << endl;
+									int countyes = 0;
+									cout << setw(60) << "welcome" << endl;
+									string ans;
+									string array[3] = { "noodles","chilli sauce","soy sauce" };
+									for (int i = 0; i < 3; i++) {
+										cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+										cin >> ans;
+										if (ans == "yes") {
+											countyes++;
+										}
+									}
+									if (countyes == 3)
+									{
+										cout << spicyNoodles();
+										fstream myfile;
+										myfile.open("spicy noodles.txt", ios::out);
+										if (myfile.is_open()) {
+											myfile << spicyNoodles();
+											myfile.close();
+										}
+										else {
+											cout << "unable to open file";
+										}
+									}
+									else {//option 8:garlic butter pasta
+										cout << "generating recipe for garlicButterPasta" << endl;
+										int countyes = 0;
+										cout << setw(60) << "welcome" << endl;
+										string ans;
+										string array[3] = { "pasta","garlic","butter" };
+										for (int i = 0; i < 3; i++) {
+											cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+											cin >> ans;
+											if (ans == "yes") {
+												countyes++;
+											}
+										}
+										if (countyes == 3)
+										{
+											cout << garlicButterPasta();
+											fstream myfile;
+											myfile.open("garlic butter pasta.txt", ios::out);
+											if (myfile.is_open()) {
+												myfile << garlicButterPasta();
+												myfile.close();
+											}
+											else {
+												cout << "unable to open file";
+											}
+										}
+										else {   //option:9 tomato basil bruschetta
+											cout << "generating recipe for tomatoBasilBruschetta" << endl;
+											int countyes = 0;
+											cout << setw(60) << "welcome" << endl;
+											string ans;
+											string array[3] = { "bread","tomatoes","basil" };
+											for (int i = 0; i < 3; i++) {
+												cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+												cin >> ans;
+												if (ans == "yes") {
+													countyes++;
+												}
+											}
+											if (countyes == 3)
+											{
+												cout << tomatoBasilBruschetta();
+												fstream myfile;
+												myfile.open("tomato basil bruschetta.txt", ios::out);
+												if (myfile.is_open()) {
+													myfile << tomatoBasilBruschetta();
+													myfile.close();
+												}
+												else {
+													cout << "unable to open file";
+												}
+											}
+											else {   //option:10 cheese garlic toast
+												cout << "generating recipe for cheeseGarlicToast" << endl;
+												int countyes = 0;
+												cout << setw(60) << "welcome" << endl;
+												string ans;
+												string array[3] = { "bread","cheese","garlic" };
+												for (int i = 0; i < 3; i++) {
+													cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+													cin >> ans;
+													if (ans == "yes") {
+														countyes++;
+													}
+												}
+												if (countyes == 3)
+												{
+													cout << cheeseGarlicToast();
+													fstream myfile;
+													myfile.open("cheese garlic toast.txt", ios::out);
+													if (myfile.is_open()) {
+														myfile << cheeseGarlicToast();
+														myfile.close();
+													}
+													else {
+														cout << "unable to open file";
+													}
+												}
+												else {    //option:11 chicken mayo sandwich
+													cout << "generating recipe for chickenMayoSandwich" << endl;
+													int countyes = 0;
+													cout << setw(60) << "welcome" << endl;
+													string ans;
+													string array[3] = { "chicken","mayo","bread" };
+													for (int i = 0; i < 3; i++) {
+														cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+														cin >> ans;
+														if (ans == "yes") {
+															countyes++;
+														}
+													}
+													if (countyes == 3)
+													{
+														cout << chickenMayoSandwich();
+														fstream myfile;
+														myfile.open("chicken mayo sandwich.txt", ios::out);
+														if (myfile.is_open()) {
+															myfile << chickenMayoSandwich();
+															myfile.close();
+														}
+														else {
+															cout << "unable to open file";
+														}
+													}
+													else { //option:12 veggie wrap
+														cout << "generating recipe for veggieWrap" << endl;
+														int countyes = 0;
+														cout << setw(60) << "welcome" << endl;
+														string ans;
+														string array[3] = { "tortilla or roti","cucumber","tomato" };
+														for (int i = 0; i < 3; i++) {
+															cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+															cin >> ans;
+															if (ans == "yes") {
+																countyes++;
+															}
+														}
+														if (countyes == 3)
+														{
+															cout << veggieWrap();
+															fstream myfile;
+															myfile.open("veggie wrap.txt", ios::out);
+															if (myfile.is_open()) {
+																myfile << veggieWrap();
+																myfile.close();
+															}
+															else {
+																cout << "unable to open file";
+															}
+														}
+														else {
+															// Option 13: Cheese Omelette
+															cout << "generating recipe for cheeseOmelette" << endl;
+															int countyes = 0;
+															cout << setw(60) << "welcome" << endl;
+															string ans;
+															string array[3] = { "eggs","cheese","butter" };
+															for (int i = 0; i < 3; i++) {
+																cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																cin >> ans;
+																if (ans == "yes") {
+																	countyes++;
+																}
+															}
+															if (countyes == 3)
+															{
+																cout << cheeseOmelette();
+																fstream myfile;
+																myfile.open("cheese omelette.txt", ios::out);
+																if (myfile.is_open()) {
+																	myfile << cheeseOmelette();
+																	myfile.close();
+																}
+																else {
+																	cout << "unable to open file";
+																}
+															}
+															else {
+																// Option 14: Simple Chicken Wrap
+																cout << "generating recipe for simpleChickenWrap" << endl;
+																int countyes = 0;
+																cout << setw(60) << "welcome" << endl;
+																string ans;
+																string array[3] = { "chicken","ketchup","tortillas" };
+																for (int i = 0; i < 3; i++) {
+																	cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																	cin >> ans;
+																	if (ans == "yes") {
+																		countyes++;
+																	}
+																}
+																if (countyes == 3)
+																{
+																	cout << simpleChickenWrap();
+																	fstream myfile;
+																	myfile.open("simple chicken wrap.txt", ios::out);
+																	if (myfile.is_open()) {
+																		myfile << simpleChickenWrap();
+																		myfile.close();
+																	}
+																	else {
+																		cout << "unable to open file";
+																	}
+																}
+																else {
+																	// Option 15: Savory Yogurt Dip
+																	cout << "generating recipe for yogurtDip" << endl;
+																	int countyes = 0;
+																	cout << setw(60) << "welcome" << endl;
+																	string ans;
+																	string array[3] = { "salt","black pepper","yogurt" };
+																	for (int i = 0; i < 3; i++) {
+																		cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																		cin >> ans;
+																		if (ans == "yes") {
+																			countyes++;
+																		}
+																	}
+																	if (countyes == 3)
+																	{
+																		cout << yogurtDip();
+																		fstream myfile;
+																		myfile.open("yogurt dip.txt", ios::out);
+																		if (myfile.is_open()) {
+																			myfile << yogurtDip();
+																			myfile.close();
+																		}
+																		else {
+																			cout << "unable to open file";
+																		}
+																	}
+																	else {
+																		// Option 16: Spicy Chickpeas
+																		cout << "generating recipe for spicyChickpeas" << endl;
+																		int countyes = 0;
+																		cout << setw(60) << "welcome" << endl;
+																		string ans;
+																		string array[3] = { "boiled chickpeas","chili powder","lemon juice" };
+																		for (int i = 0; i < 3; i++) {
+																			cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																			cin >> ans;
+																			if (ans == "yes") {
+																				countyes++;
+																			}
+																		}
+																		if (countyes == 3)
+																		{
+																			cout << spicyChickpeas();
+																			fstream myfile;
+																			myfile.open("spicy chickpeas.txt", ios::out);
+																			if (myfile.is_open()) {
+																				myfile << spicyChickpeas();
+																				myfile.close();
+																			}
+																			else {
+																				cout << "unable to open file";
+																			}
+																		}
+
+																		else {
+																			// Option 17: Honey Chili Fries
+																			cout << "generating recipe for honeyChilliFries" << endl;
+																			int countyes = 0;
+																			cout << setw(60) << "welcome" << endl;
+																			string ans;
+																			string array[3] = { "fries","honey","chili flakes" };
+																			for (int i = 0; i < 3; i++) {
+																				cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																				cin >> ans;
+																				if (ans == "yes") {
+																					countyes++;
+																				}
+																			}
+																			if (countyes == 3)
+																			{
+																				cout << honeyChilliFries();
+																				fstream myfile;
+																				myfile.open("honey chilli fries.txt", ios::out);
+																				if (myfile.is_open()) {
+																					myfile << honeyChilliFries();
+																					myfile.close();
+																				}
+																				else {
+																					cout << "unable to open file";
+																				}
+																			}
+																			else {
+																				// Option 18: BBQ Chicken Sliders
+																				cout << "generating recipe for bbqChickenSliders" << endl;
+																				int countyes = 0;
+																				cout << setw(60) << "welcome" << endl;
+																				string ans;
+																				string array[3] = { "chicken","bbq sauce","buns" };
+																				for (int i = 0; i < 3; i++) {
+																					cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																					cin >> ans;
+																					if (ans == "yes") {
+																						countyes++;
+																					}
+																				}
+																				if (countyes == 3)
+																				{
+																					cout << bbqChickenSliders();
+																					fstream myfile;
+																					myfile.open("bbq chicken sliders.txt", ios::out);
+																					if (myfile.is_open()) {
+																						myfile << bbqChickenSliders();
+																						myfile.close();
+																					}
+																					else {
+																						cout << "unable to open file";
+																					}
+																				}
+																				else {
+																					// Option 19: Vegetable Stir Fry
+																					cout << "generating recipe for vegStirFry" << endl;
+																					int countyes = 0;
+																					cout << setw(60) << "welcome" << endl;
+																					string ans;
+																					string array[3] = { "veggies","salt","soy sauce" };
+																					for (int i = 0; i < 3; i++) {
+																						cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																						cin >> ans;
+																						if (ans == "yes") {
+																							countyes++;
+																						}
+																					}
+																					if (countyes == 3)
+																					{
+																						cout << vegStirFry();
+																						fstream myfile;
+																						myfile.open("vegetable stir fry.txt", ios::out);
+																						if (myfile.is_open()) {
+																							myfile << vegStirFry();
+																							myfile.close();
+																						}
+																						else {
+																							cout << "unable to open file";
+																						}
+																					}
+																					else {
+																						// Option 20: Chicken Quesadilla
+																						cout << "generating recipe for chickenQuesadillas" << endl;
+																						int countyes = 0;
+																						cout << setw(60) << "welcome" << endl;
+																						string ans;
+																						string array[3] = { "chicken","cheese","tortilla/roti" };
+																						for (int i = 0; i < 3; i++) {
+																							cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																							cin >> ans;
+																							if (ans == "yes") {
+																								countyes++;
+																							}
+																						}
+																						if (countyes == 3)
+																						{
+																							cout << chickenQuesadillas();
+																							fstream myfile;
+																							myfile.open("chicken quesadillas.txt", ios::out);
+																							if (myfile.is_open()) {
+																								myfile << chickenQuesadillas();
+																								myfile.close();
+																							}
+																							else {
+																								cout << "unable to open file";
+																							}
+																						}
+
+																						else {
+																							//option:21 chicken lettuce wraps
+																							cout << "generating recipe for chickenLettuceWraps" << endl;
+																							int countyes = 0;
+																							cout << setw(60) << "welcome" << endl;
+																							string ans;
+																							string array[3] = { "chicken","soy sauce","lettuce" };
+																							for (int i = 0; i < 3; i++) {
+																								cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																								cin >> ans;
+																								if (ans == "yes") {
+																									countyes++;
+																								}
+																							}
+																							if (countyes == 3)
+																							{
+																								cout << chickenLettuceWraps();
+																								fstream myfile;
+																								myfile.open("chicken lettuce wraps.txt", ios::out);
+																								if (myfile.is_open()) {
+																									myfile << chickenLettuceWraps();
+																									myfile.close();
+																								}
+																								else {
+																									cout << "unable to open file";
+																								}
+																							}
+																							else {
+																								// Option 22: Spicy Baked Potatoes
+																								cout << "generating recipe for spicyBakedPotatoes" << endl;
+																								cout << "generating recipe for spicyBakedPotatoes" << endl;
+																								int countyes = 0;
+																								cout << setw(60) << "welcome" << endl;
+																								string ans;
+																								string array[3] = { "potatoes","paprika","oil" };
+																								for (int i = 0; i < 3; i++) {
+																									cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																									cin >> ans;
+																									if (ans == "yes") {
+																										countyes++;
+																									}
+																								}
+																								if (countyes == 3)
+																								{
+																									cout << spicyBakedPotatoes();
+																									fstream myfile;
+																									myfile.open("spicy baked potatoes.txt", ios::out);
+																									if (myfile.is_open()) {
+																										myfile << spicyBakedPotatoes();
+																										myfile.close();
+																									}
+																									else {
+																										cout << "unable to open file";
+																									}
+																								}
+																								else {
+																									// Option 23: Cheesy Potato Bites
+																									cout << "generating recipe for cheesyPotatoBites" << endl;
+																									int countyes = 0;
+																									cout << setw(60) << "welcome" << endl;
+																									string ans;
+																									string array[3] = { "potatoes","cheese","bread crumbs" };
+																									for (int i = 0; i < 3; i++) {
+																										cout << "do you have " << array[i] << " ?(yes/no)" << endl;
+																										cin >> ans;
+																										if (ans == "yes") {
+																											countyes++;
+																										}
+																									}
+																									if (countyes == 3)
+																									{
+																										cout << cheesyPotatoBites();
+																										fstream myfile;
+																										myfile.open("cheesy potato bites.txt", ios::out);
+																										if (myfile.is_open()) {
+																											myfile << cheesyPotatoBites();
+																											myfile.close();
+																										}
+																										else {
+																											cout << "unable to open file";
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			cout << "you wanna generate any other recipe with 3 ingredients" << endl;//ask the user if he/she wants more 3 ing recipes
+			cin >> more;
+		} while (more == "yes");//loop will run until user says yes he
+	}
+	break;
+	case 7:
+	{
+		ing3_recipes();//display all 3 ing recipes
+	}
+	break;
+	case 8:
+	{
+		fstream myfile;
+		myfile.open("mealprep.txt");       //creates file mealprep.txt
+		cin.ignore();
+		if (myfile.is_open()) {
+			for (int i = 0; i < 7; i++) {
+				/*loop to get values of breakie, lunch and dinner from user fro 7 days
+				displaying days as well*/
+				cout << "enter recipe for:" << array[i].days << endl;
+				cout << "enter recipe for:" << array[i].days << "breakie:" << endl;
+				getline(cin, array[i].breakie);
+				cout << "enter recipe for:" << array[i].days << "lunch:" << endl;
+				getline(cin, array[i].lunch);
+				cout << "enter recipe for:" << array[i].days << "dinner:" << endl;
+				getline(cin, array[i].dinner);
+				myfile << array[i].days << endl;             //saves days into file
+				myfile << array[i].breakie << endl;             //saves breakie into file
+				myfile << array[i].lunch << endl;              //saves lunch into file
+				myfile << array[i].dinner << endl;             //saves dinner into file
+			}
+			myfile.close();
+		}
+		else
+			cout << "unable to open file" << endl;
+	}
+	break;
+	case 9:        //display the mealprep to user
+	{
+		fstream myfile;
+		myfile.open("mealprep.txt");
+		if (myfile.is_open()) {
+			for (int i = 0; i < 7; i++) {
+				getline(myfile, array[i].days);  //read all the data from file so that when we display data again it already have read and can display it
+				getline(myfile, array[i].breakie);
+				getline(myfile, array[i].lunch);
+				getline(myfile, array[i].dinner);
+			}
+			myfile.close();
+			cout << "Here's your weekly mealprep:" << endl;  //displaying mealprep
+			cout << setw(12) << "DAYS";
+			cout << setw(25) << "BREAKIE";
+			cout << setw(25) << "LUNCH";
+			cout << setw(25) << "DINNER" << endl;
+			cout << "-------------------------------------------------------------------------------------------------------------" << endl;
+			for (int i = 0; i < 7; i++) {
+				{
+					cout << left << setw(12) << array[i].days << "         : ";
+					cout << setw(35) << (array[i].breakie.empty() ? "[None]" : array[i].breakie);//conditional statement
+					cout << setw(35) << (array[i].lunch.empty() ? "[None]" : array[i].lunch);
+					cout << setw(35) << (array[i].dinner.empty() ? "[None]" : array[i].dinner) << endl;
+				}
+			}
+		}
+		else
+			cout << "unable to opn file" << endl;
+	}
+	break;
+	case 10://update or remove something from the mealprep
+	{
+		cout << "if you wanna remove something just press enter without writing anything otherwise type new recipe name" << endl;
+		string choice2;
+		string choicee;
+		do {
+			fstream myfilee;
+			myfilee.open("mealprep.txt");
+			if (myfilee.is_open()) {
+				for (int i = 0; i < 7; i++) {
+					getline(myfilee, array[i].days);             //read data from file
+					getline(myfilee, array[i].breakie);
+					getline(myfilee, array[i].lunch);
+					getline(myfilee, array[i].dinner);
+				}
+				myfilee.close();
+			}
+			else
+				cout << "unable to open file" << endl;
+			fstream myfile;
+			string day;
+			string choice;
+			cout << "enter the day which you wanna update/remove" << endl;
+			cin >> day;
+			for (int i = 0; i < 7; i++)
+			{
+				if (day == array[i].days)
+				{
+					cout << "what do you wanna update/remove(lunch,breakie or dinner) for:" << array[i].days << endl;
+					cin >> choice;
+					cin.ignore();
+					if (choice == "breakie") {
+						cout << "enter recipe name for:" << array[i].days << "breakie:" << endl;
+						getline(cin, array[i].breakie);
+					}
+					else if (choice == "lunch") {
+						cout << "enter recipe name for:" << array[i].days << "lunch:" << endl;
+						getline(cin, array[i].lunch);
+					}
+					else if (choice == "dinner") {
+						cout << "enter recipe name for:" << array[i].days << "dinner:" << endl;
+						getline(cin, array[i].dinner);
+					}
+					else
+						cout << "invalid input" << endl;
+					cout << "mealprep updated!" << endl;
+				}
+			}
+			myfile.open("mealprep.txt", ios::out);
+			if (myfile.is_open()) {                  //store all updated data in file,also data that didn't update
+				for (int i = 0; i < 7; i++) {
+					myfile << array[i].days << endl;
+					myfile << array[i].breakie << endl;
+					myfile << array[i].lunch << endl;
+					myfile << array[i].dinner << endl;
+				}
+				myfile.close();
+			}
+			else
+				cout << "unable to open file" << endl;
+
+			cout << "do you wanna update/remove something else?(yes/no)" << endl;
+			cin >> choicee;
+		} while (choicee == "yes");
+		cout << "do you wanna see your new mealprep" << endl;
+		cin >> choice2;
+		if (choice2 == "yes") {
+			cout << "Here's your weekly mealprep:" << endl;
+			cout << setw(12) << "DAYS";
+			cout << setw(25) << "BREAKIE";
+			cout << setw(25) << "LUNCH";
+			cout << setw(25) << "DINNER" << endl;
+			cout << "-------------------------------------------------------------------------------------------------------------" << endl;
+			for (int i = 0; i < 7; i++) {
+				{
+					cout << left << setw(12) << array[i].days << "         : ";
+					cout << setw(35) << (array[i].breakie.empty() ? "[None]" : array[i].breakie);
+					cout << setw(35) << (array[i].lunch.empty() ? "[None]" : array[i].lunch);
+					cout << setw(35) << (array[i].dinner.empty() ? "[None]" : array[i].dinner) << endl;
+				}
+			}
+		}
+		else
+			break;
+	}
+	break;
+	default:                // Default case is for handling invalid inputs
+		cout << "invalid input" << endl;// If the user enters an option that does not match any case, display an error message
+	}
+
+}
+void menu() { // Displaying a separator line for aesthetics
+	cout << "--------------------------------------------------------------------------------------------------------" << endl;
+	cout << right << setw(95) << "here's the RECIPE CATALOG" << endl;  // Displaying the title of the recipe catalog, centered within the line
+	cout << "---------------------------------------------------------------------------------------------------------" << endl;
+	cout << endl;            // Leaving space for better readability
+	// Displaying the list of recipes available for the user to choose from
+	cout << "1.Chicken Biryani \t\t2.Chicken Karahi" << endl;//using \t for a nice display
+	cout << "3.beef Pulao\t\t\t4.chicken Pulao" << endl;
+	cout << "5.Chicken Haleem\t\t6.Chicken Nihari" << endl;
+	cout << "7.Minced Beef\t\t\t8.Moroccon Chicken Steak " << endl;
+	cout << "9.Chicken Terragon\t\t10.Chicken Chilli Dry" << endl;
+	cout << "11.Chicken Manchurian\t\t12.Chicken Chowmein" << endl;
+	cout << "13.Crispy Fried Chicken\t\t14.Chicken Alfredo Pasta" << endl;
+	cout << "15.Chicken Caesar Salad\t\t16.Spicy Chicken Wraps" << endl;
+	cout << "17.Chicken Zinger Burger\t18.Beef Smash Burger" << endl;
+	cout << "19.Dynamite Chicken\t\t20.Singaporian Rice" << endl;
+	cout << "21.Loaded Fries\t\t\t22.Cheese stuffed Seekh Kebab" << endl;
+	cout << "23.Club Sandwiches\t\t24.Cheese Omelette" << endl;
+	cout << "25.Pancakes\t\t\t26.Nutella Stuffed Pancakes" << endl;
+	cout << "27.Lotus Biscoff Cheesecake\t28.Mug Brownie" << endl;
+	cout << "29.Dubai Chocolate\t\t30.Churros with Chocolate Dip" << endl;
+
+}    // This function updates the contents of a recipe file
+void ing3_recipes() {
+	cout << "-----------------------------------------------------------------------------------------------------------------------" << endl;
+	cout << right << setw(100) << "The recipes with just 3 ingredients are as follows:" << endl;
+	cout << "-----------------------------------------------------------------------------------------------------------------------" << endl;
+	cout << "1.Garlic Soy Chicken\t\t2.Egg Fried Rice" << endl;
+	cout << "3.Tomato Garlic Pasta\t\t4.Chicken Curry" << endl;
+	cout << "5.Omelette\t\t\t6.Grilled Cheese Bread" << endl;
+	cout << "7.Spicy Noodles\t\t\t8.Garlic Butter Pasta" << endl;
+	cout << "9.Tomato Basil Bruschetta\t10.Cheese Garlic Toast" << endl;
+	cout << "11.Chicken Mayo Sandwich\t12.Veggie Wrap" << endl;
+	cout << "13.Cheese Omelette\t\t14.Simple Chicken Wrap" << endl;
+	cout << "15.Yogurt Dip\t\t\t16.Spicy Chickpeas" << endl;
+	cout << "17.Honey Chilli Fries\t\t18.BBQ Chicken Sliders" << endl;
+	cout << "19.Veg Stir Fry\t\t\t20.Chicken Quesadillas" << endl;
+	cout << "21.Chicken Lettuce Wraps\t22.Spicy Baked Potatoes" << endl;
+	cout << "23.Cheesey Potato Bites" << endl;
+}
+void update_code(string& file_name, string& recipe) {
+	fstream myfile;
+	myfile.open(file_name + ".txt", ios::out);// Open the file in output mode; this will overwrite the existing contents
+	if (myfile.is_open()) {         // Check if the file has successfully opened
+		string actually_update_recipe;
+		cout << "here's the recipe for " << file_name << endl; // Display the original recipe title to the user
+		myfile << "here's the recipe for " << file_name << endl;//and also write it to the file
+		cout << recipe << endl;                 // Display the current recipe contents to the user
+		cout << "enter the changes you wanna save" << endl;
+		getline(cin, actually_update_recipe);               // Read the updated recipe input from the user
+		myfile << "-------------------------------------" << endl;               // Add a separator line to distinguish the updated section
+		myfile << "here are the changes that you have made" << endl;         // Write a note and the actual user-provided changes to the file
+		myfile << actually_update_recipe << endl;
+		cout << "these changes are also stored in.txt on your desktop" << endl;// Confirm to the user that the changes have been saved
+		myfile.close();            // Close the file after writing
+	}
+	else
+		cout << "file not opened";            // Notify the user if the file could not be opened
+}// This function handles saving a selected recipe to a text file and displaying it.
+void option1_code(string& file_name, string& recipe) {
+	fstream myfile;
+	myfile.open(file_name + ".txt", ios::app); // Open the file in append mode so previous content is preserved and new content is added at the end
+	if (myfile.is_open()) // Check if the file was successfully opened
+	{
+		cout << "here's the recipe for " << file_name << endl;  // Display the recipe title to the user
+		myfile << "here's the recipe for " << file_name << endl; // Write the recipe title to the file
+		cout << recipe << endl;               // Display the actual recipe to the user
+		myfile << recipe << endl;                // Write the actual recipe to the file
+		cout << "recipe is also stored in a file recipe.txt on your desktop" << endl;        // Notify the user that the recipe has been stored on the desktop
+		myfile.close(); // Close the file to ensure data is saved and to free system resources
+		//We close the file to save the data and stop using the file.
+	}
+	else
+		cout << "file not opened";            // If the file could not be opened, notify the user
+}
+// Function to delete a recipe file from the desk
+void delete_code(string& file_name)
+{
+	fstream myfile;
+	myfile.open(file_name + ".txt", ios::trunc | ios::out);
+	if (myfile.is_open()) // Check if the file was successfully opened
+	{
+		cout << "deleted everything that was already here" << endl;
+		myfile << "" << endl;
+	}
+	else
+		cout << "file not opened";
+}
+string biryani() {// Function that returns the recipe for Biryani
+	return "Good choice!\nIngredients:\n- 1 kg chicken (washed and cut)\n- 2 cups basmati rice (soaked 30 mins)\n- 1 cup yogurt\n- 2 onions (sliced)\n- 2 tomatoes (chopped)\n- 2 tbsp ginger garlic paste\n- 1 tsp red chili powder\n- 1/2 tsp turmeric\n- 1 tsp garam masala\n- Whole spices (cloves, cardamoms, bay leaf, cinnamon)\n- Salt\n- Chopped mint & coriander\n- 4 tbsp oil or ghee\n- Water as needed\nInstructions:\n1. Fry onions until golden.\n2. Add paste, then chicken and cook.\n3. Add tomatoes, yogurt, spices; cook until oil separates.\n4. Boil rice with spices until 80% done.\n5. Layer chicken and rice; top with herbs and garam masala.\n6. Cover and steam on low heat for 15–20 mins.\n7. Gently mix and serve with raita.\n";
+}
+string karahi() {// Function that returns the recipe for karahi
+	return "Delicious choice!\nIngredients:\n- 1 kg chicken (cut into pieces)\n- 2 tbsp ginger garlic paste\n- 2 onions (sliced)\n- 3 tomatoes (chopped)\n- 2-3 green chilies (slit)\n- 1 tsp red chili powder\n- 1 tsp cumin seeds\n- 1/2 tsp turmeric powder\n- 1 tsp garam masala\n- 1/2 cup yogurt\n- 1/2 cup fresh coriander (chopped)\n- Salt to taste\n- 4 tbsp oil or ghee\nInstructions:\n1. Heat oil in a karahi, add cumin seeds and let them splutter.\n2. Add sliced onions and sauté until golden.\n3. Add ginger garlic paste, cook for a minute.\n4. Add chicken pieces and cook until they turn golden brown.\n5. Add chopped tomatoes, red chili powder, turmeric, salt, and cook until tomatoes soften.\n6. Stir in yogurt, cook for 5 minutes until the oil separates.\n7. Add green chilies, garam masala, and fresh coriander; cook for another 2-3 minutes.\n8. Serve hot with naan or rice.\n";
+}
+string chicken_pulao() {// Function that returns the recipe for chicken pulao
+	return "Great choice!\nIngredients:\n- 1 kg chicken (cut into pieces)\n- 2 cups basmati rice (soaked 30 mins)\n- 1 large onion (sliced)\n- 2 tomatoes (chopped)\n- 2 tbsp ginger garlic paste\n- 1 tsp cumin seeds\n- 1 tsp red chili powder\n- 1/2 tsp turmeric powder\n- 1 tsp garam masala\n- 1/2 cup yogurt\n- 4 cups water or chicken broth\n- Salt to taste\n- 4 tbsp oil or ghee\n- Whole spices (cloves, cardamoms, bay leaf, cinnamon)\n- Fresh coriander (chopped)\nInstructions:\n1. Heat oil in a large pot, add whole spices and cumin seeds.\n2. Add sliced onions and saute until golden brown.\n3. Add ginger garlic paste, cook for 1-2 minutes.\n4. Add chicken pieces, cook until they turn golden brown.\n5. Stir in tomatoes, red chili powder, turmeric, and salt. Cook until tomatoes soften.\n6. Add yogurt and garam masala, cook until the oil separates.\n7. Add water or chicken broth and bring to a boil.\n8. Add soaked rice, mix well, and cover.\n9. Cook on low heat for 15-20 minutes until rice is cooked and water is absorbed.\n10. Garnish with fresh coriander and serve hot.\n";
+}
+string beef_pulao() {// Function that returns the recipe for beef pulao
+	return "Tasty choice!\nIngredients:\n- 1 kg beef (cut into chunks)\n- 2 cups basmati rice (soaked 30 mins)\n- 2 large onions (sliced)\n- 2 tomatoes (chopped)\n- 2 tbsp ginger garlic paste\n- 1 tsp cumin seeds\n- 1 tsp red chili powder\n- 1/2 tsp turmeric powder\n- 1 tsp garam masala\n- 1/2 cup yogurt\n- 4 cups water or beef broth\n- Salt to taste\n- 4 tbsp oil or ghee\n- Whole spices (cloves, cardamoms, bay leaf, cinnamon)\n- Fresh coriander (chopped)\nInstructions:\n1. Heat oil in a large pot, add whole spices and cumin seeds.\n2. Add sliced onions and sauté until golden brown.\n3. Add ginger garlic paste, cook for 1-2 minutes.\n4. Add beef chunks, cook until browned on all sides.\n5. Stir in tomatoes, red chili powder, turmeric, and salt. Cook until tomatoes soften.\n6. Add yogurt and garam masala, cook until the oil separates.\n7. Add water or beef broth and bring to a boil.\n8. Add soaked rice, mix well, and cover.\n9. Cook on low heat for 30-40 minutes until beef is tender and rice is cooked.\n10. Garnish with fresh coriander and serve hot.\n";
+}
+string haleem() {// Function that returns the recipe for haleem
+	return "Flavorful choice!\nIngredients:\n- 1 kg chicken (boneless, shredded)\n- 1/2 cup wheat (soaked overnight)\n- 1/4 cup split yellow lentils (moong dal)\n- 1/4 cup split chickpeas (chana dal)\n- 1/4 cup barley (soaked)\n- 2 large onions (sliced)\n- 2 tomatoes (chopped)\n- 2 tbsp ginger garlic paste\n- 2 green chilies (slit)\n- 1 tsp red chili powder\n- 1 tsp turmeric powder\n- 1 tsp garam masala\n- 1/2 cup yogurt\n- 6-8 cups chicken broth or water\n- 4 tbsp oil or ghee\n- Salt to taste\n- Fresh coriander (chopped)\n- Fried onions for garnish\n- Lemon wedges\nInstructions:\n1. In a large pot, heat oil, sauté onions until golden brown.\n2. Add ginger garlic paste, cook for a minute, then add chicken and cook until browned.\n3. Add tomatoes, green chilies, red chili powder, turmeric, and salt. Cook until tomatoes soften.\n4. Add soaked lentils, barley, and wheat, and stir well.\n5. Pour in chicken broth or water, cover, and cook on low heat for 1.5-2 hours, stirring occasionally.\n6. Once the grains are soft and the mixture thickens, blend it to a smooth texture using a hand blender or a regular blender.\n7. Stir in yogurt and garam masala, cook for an additional 10 minutes.\n8. Garnish with fried onions, fresh coriander, and serve with lemon wedges.\n";
+}
+string nihari() {// Function that returns the recipe for nihari
+	return "Delicious choice!\nIngredients:\n- 1 kg chicken (cut into pieces)\n- 2 tbsp ginger garlic paste\n- 2 large onions (sliced)\n- 3 tomatoes (chopped)\n- 1 tsp red chili powder\n- 1/2 tsp turmeric powder\n- 1 tsp garam masala\n- 2 tbsp nihari masala (store-bought or homemade)\n- 1/4 cup wheat flour (for thickening)\n- 6 cups water or chicken broth\n- 4 tbsp oil or ghee\n- Whole spices (cloves, cardamoms, bay leaf, cinnamon)\n- Salt to taste\n- Fresh coriander (chopped)\n- Lemon wedges\n- Ginger slices for garnish\nInstructions:\n1. Heat oil or ghee in a large pot, add whole spices and sauté until fragrant.\n2. Add onions and sauté until golden brown.\n3. Add ginger garlic paste and cook for 1-2 minutes.\n4. Add chicken pieces, cook until they turn golden brown.\n5. Stir in tomatoes, red chili powder, turmeric, salt, and nihari masala. Cook for a few minutes until the oil separates.\n6. Add water or chicken broth, cover, and cook on low heat for 1.5-2 hours until chicken is tender.\n7. In a small bowl, mix wheat flour with a little water to make a smooth paste, then stir it into the pot to thicken the gravy.\n8. Cook for another 10-15 minutes until the gravy thickens to your desired consistency.\n9. Garnish with fresh coriander, ginger slices, and serve hot with naan or rice.\n";
+}
+string minced_beef() {// Function that returns the recipe for minced beef
+	return "A flavorful choice!\nIngredients:\n- 500g minced chicken or beef\n- 2 large onions (sliced)\n- 2 tomatoes (chopped)\n- 2 tbsp ginger garlic paste\n- 2 green chilies (slit)\n- 1 tsp red chili powder\n- 1/2 tsp turmeric powder\n- 1 tsp cumin powder\n- 1 tsp garam masala\n- 1/2 cup peas (optional)\n- 4 tbsp oil or ghee\n- Salt to taste\n- Fresh coriander (chopped)\nInstructions:\n1. Heat oil in a large pan, add onions and sauté until golden brown.\n2. Add ginger garlic paste and cook for 1-2 minutes.\n3. Add minced meat, cook until browned and no longer pink.\n4. Stir in tomatoes, red chili powder, turmeric, cumin powder, and salt. Cook until tomatoes soften.\n5. Add green chilies and peas (if using), then cook for another 5 minutes.\n6. Sprinkle garam masala, stir, and cook for another 2 minutes.\n7. Garnish with fresh coriander and serve hot with naan or rice.\n";
+}
+string steak() {// Function that returns the recipe for steak
+	return "Perfect choice with veggies and fries!\nIngredients:\n- 4 chicken breasts (boneless, skinless)\n- 2 tbsp olive oil\n- 1 tbsp ground cumin\n- 1 tbsp ground coriander\n- 1 tsp paprika\n- 1 tsp cinnamon\n- 1/2 tsp turmeric\n- 1/2 tsp ground ginger\n- Salt and pepper to taste\n- 1 tbsp lemon juice\n- 2 tbsp honey\n- 1/4 cup chicken broth\n- Fresh coriander (chopped)\n- Lemon wedges for serving\n- 2 medium potatoes (cut into fries)\n- 1 tbsp olive oil (for fries)\n- 1/2 tsp paprika (for fries)\n- 1/2 tsp garlic powder (for fries)\n- 1 cup mixed vegetables (carrots, bell peppers, zucchini)\n- Salt and pepper to taste\nInstructions:\n1. Preheat oven to 200°C (400°F). Toss cut potatoes in olive oil, paprika, garlic powder, salt, and pepper. Place on a baking sheet and bake for 25-30 minutes, flipping halfway through until golden and crispy.\n2. For the chicken, mix cumin, coriander, paprika, cinnamon, turmeric, ginger, salt, and pepper in a small bowl.\n3. Rub the spice mixture onto both sides of the chicken breasts.\n4. Heat olive oil in a skillet over medium heat, then cook the chicken breasts for 5-6 minutes on each side until golden and cooked through.\n5. Remove chicken from the skillet and set aside.\n6. In the same skillet, add chicken broth, honey, and lemon juice. Stir to combine and simmer for 2-3 minutes until the sauce thickens slightly.\n7. Return the chicken to the skillet, spoon some sauce over the top, and cook for another 2-3 minutes.\n8. In a separate pan, sauté the mixed vegetables in a bit of olive oil, salt, and pepper until tender (about 5-7 minutes).\n9. Serve the chicken with roasted fries and sautéed veggies. Garnish with fresh coriander and lemon wedges.\n";
+}
+string terragon() {// Function that returns the recipe for chicken terragon
+	return "A delightful choice!\nIngredients:\n- 4 chicken breasts (boneless, skinless)\n- 2 tbsp olive oil\n- 1 tbsp dried tarragon\n- 1 tbsp Dijon mustard\n- 1 tbsp honey\n- 1 tbsp lemon juice\n- 1/2 cup chicken broth\n- Salt and pepper to taste\n- 1 cup mixed vegetables (carrots, broccoli, peas)\n- 2 medium potatoes (cut into fries)\n- 2 eggs (for egg fries)\n- 1 cup cooked rice\n- 1/4 cup mayonnaise\n- 1 tbsp lemon juice (for sauce)\n- 1 tbsp mustard (for sauce)\n- Fresh parsley (chopped)\nInstructions:\n1. Preheat oven to 200°C (400°F). Toss cut potatoes in olive oil, salt, and pepper. Place on a baking sheet and bake for 25-30 minutes, flipping halfway through until golden and crispy.\n2. For the chicken, mix tarragon, Dijon mustard, honey, lemon juice, salt, and pepper in a small bowl. Rub the mixture over both sides of the chicken breasts.\n3. Heat olive oil in a skillet over medium heat, cook chicken breasts for 5-6 minutes on each side until golden and cooked through.\n4. Remove chicken from the skillet and set aside. Add chicken broth to the skillet and simmer for 2-3 minutes until the sauce reduces slightly.\n5. In a separate pan, sauté the mixed vegetables in a bit of olive oil, salt, and pepper until tender (about 5-7 minutes).\n6. For the egg fries, heat a little oil in a pan, crack the eggs and fry them sunny-side up, adding salt and pepper to taste.\n7. For the sauce, combine mayonnaise, lemon juice, and mustard in a bowl. Adjust seasoning with salt and pepper.\n8. Serve the tarragon chicken with roasted fries, sautéed veggies, egg fries, and rice. Drizzle the sauce over the rice and garnish with fresh parsley.\n";
+}
+string chilli_dry() {// Function that returns the recipe for chicken chilli dry
+	return "Spicy and tasty choice!\nIngredients:\n- 500g chicken (boneless, cut into small pieces)\n- 2 tbsp soy sauce\n- 1 tbsp cornflour\n- 1 tbsp ginger garlic paste\n- 2 onions (sliced)\n- 2-3 green chilies (slit)\n- 1 red bell pepper (sliced)\n- 1/2 tsp red chili powder\n- 1/2 tsp turmeric powder\n- 1 tbsp vinegar\n- 1 tsp sugar\n- 2 tbsp oil\n- 2 tbsp tomato ketchup\n- 1 tbsp soy sauce\n- 1/2 cup water\n- Fresh coriander (chopped)\n- Salt to taste\nInstructions:\n1. In a bowl, mix chicken with soy sauce, cornflour, and a pinch of salt. Set aside for 15 minutes.\n2. Heat oil in a pan, add chicken pieces, and fry them until golden brown and crispy. Remove and set aside.\n3. In the same pan, add sliced onions and sauté until soft.\n4. Add ginger garlic paste and cook for a minute until fragrant.\n5. Add green chilies, red bell pepper, red chili powder, turmeric, and stir-fry for 2-3 minutes.\n6. Add tomato ketchup, soy sauce, vinegar, and sugar. Stir to combine.\n7. Add the fried chicken back into the pan, toss to coat with the sauce, and cook for another 2-3 minutes.\n8. Add a little water if the sauce is too thick and cook until it reaches the desired consistency.\n9. Garnish with fresh coriander and serve hot with rice or naan.\n";
+}
+string manchurian() {// Function that returns the recipe for chicken manchurian
+	return "A flavorful choice!\nIngredients:\n- 500g chicken (boneless, cut into small pieces)\n- 2 tbsp soy sauce\n- 1 tbsp cornflour\n- 1 tbsp ginger garlic paste\n- 1 onion (chopped)\n- 2-3 green chilies (slit)\n- 1/2 bell pepper (chopped)\n- 1 tbsp vinegar\n- 2 tbsp tomato ketchup\n- 1 tbsp soy sauce\n- 1/2 tsp red chili powder\n- 1/2 tsp turmeric powder\n- 1 tbsp sugar\n- 2 tbsp oil\n- 1/2 cup water\n- 1 tbsp green onions (chopped)\n- Salt to taste\nInstructions:\n1. In a bowl, mix chicken with soy sauce, cornflour, a pinch of salt, and set aside for 15-20 minutes.\n2. Heat oil in a pan, fry the marinated chicken pieces until golden brown and crispy. Remove and set aside.\n3. In the same pan, add chopped onions and sauté until soft and translucent.\n4. Add ginger garlic paste and cook for 1-2 minutes until fragrant.\n5. Add green chilies, bell pepper, red chili powder, turmeric, and stir for another 2-3 minutes.\n6. Add soy sauce, tomato ketchup, vinegar, sugar, and water. Stir well to combine.\n7. Add the fried chicken pieces back into the pan, toss to coat with the sauce, and cook for 2-3 minutes.\n8. Garnish with green onions and serve hot with rice or noodles.\n";
+}
+string chowmein() {// Function that returns the recipe for chicken chowmein
+	return "Delicious choice!\nIngredients:\n- 200g noodles (boiled)\n- 1 cup mixed vegetables (carrots, bell peppers, cabbage)\n- 1 onion (sliced)\n- 2 cloves garlic (minced)\n- 2 tbsp soy sauce\n- 1 tbsp vinegar\n- 1 tbsp oyster sauce\n- 1 tsp sugar\n- 2 tbsp oil\n- Salt and pepper to taste\nInstructions:\n1. Heat oil in a pan, add onions and garlic, sauté until fragrant.\n2. Add mixed vegetables and stir-fry for 3-4 minutes.\n3. Add soy sauce, vinegar, oyster sauce, sugar, salt, and pepper. Stir well.\n4. Add boiled noodles, toss to coat them in the sauce and vegetables. Cook for another 2-3 minutes.\n5. Serve hot.\n";
+}
+string fried_chicken() {// Function that returns the recipe for crispy fried chicken
+	return "Crispy and tasty choice!\nIngredients:\n- 8 chicken pieces (legs or thighs)\n- 1 cup buttermilk\n- 1 cup all-purpose flour\n- 1 tsp paprika\n- 1/2 tsp garlic powder\n- 1/2 tsp onion powder\n- 1 tsp salt\n- 1/2 tsp pepper\n- 1 tsp baking powder\n- Oil for frying\nInstructions:\n1. Soak the chicken in buttermilk for 1-2 hours.\n2. In a separate bowl, mix flour, paprika, garlic powder, onion powder, salt, pepper, and baking powder.\n3. Coat the chicken with the flour mixture.\n4. Heat oil in a frying pan and fry the chicken until golden brown and crispy (about 10-12 minutes).\n5. Drain on paper towels and serve hot.\n";
+}
+string pasta() {// Function that returns the recipe for alfredo pasta
+	return "Creamy and comforting choice!\nIngredients:\n- 250g fettuccine or pasta of choice\n- 2 tbsp butter\n- 2 cloves garlic (minced)\n- 1 cup heavy cream\n- 1 cup grated parmesan cheese\n- Salt and black pepper to taste\n- 1/2 tsp Italian seasoning (optional)\n- Fresh parsley (chopped, for garnish)\n- Optional: grilled chicken or mushrooms\nInstructions:\n1. Boil pasta according to package instructions. Drain and set aside.\n2. In a large pan, melt butter over medium heat. Add minced garlic and sauté for 1 minute until fragrant.\n3. Pour in the heavy cream and bring to a gentle simmer.\n4. Stir in grated parmesan cheese until melted and the sauce thickens.\n5. Season with salt, pepper, and Italian seasoning if using.\n6. Add cooked pasta to the sauce and toss to coat evenly.\n7. Optional: Add sliced grilled chicken or sautéed mushrooms for extra flavor.\n8. Garnish with chopped parsley and serve hot.\n";
+}
+string salad() {// Function that returns the recipe for caesar salad
+	return "Healthy and refreshing choice!\nIngredients:\n- 1 cucumber (sliced)\n- 1 tomato (chopped)\n- 1 onion (sliced)\n- 1/2 cup lettuce (chopped)\n- 1/4 cup olives (sliced)\n- 1 tbsp olive oil\n- 1 tbsp lemon juice\n- Salt and pepper to taste\nInstructions:\n1. Combine cucumber, tomato, onion, lettuce, and olives in a bowl.\n2. Drizzle olive oil and lemon juice over the salad.\n3. Toss everything together, season with salt and pepper.\n4. Serve immediately.\n";
+}
+string wraps() {// Function that returns the recipe for chicken wraps
+	return "A flavorful and filling choice!\nIngredients:\nFor the Fried Chicken:\n- 2 chicken breasts (cut into strips)\n- 1 cup buttermilk\n- 1 tsp salt\n- 1 tsp black pepper\n- 1/2 tsp paprika\n- 1/2 tsp garlic powder\n- 1/2 tsp chili flakes (optional)\n- 1 cup all-purpose flour\n- Oil for deep frying\nFor the Wraps:\n- Tortilla wraps\n- Lettuce (shredded)\n- Tomatoes (sliced)\n- Onions (sliced)\n- Cucumber (sliced)\n- Mayonnaise or garlic sauce\n- Cheese slices (optional)\nInstructions:\n1. In a bowl, mix chicken strips with buttermilk, salt, pepper, paprika, garlic powder, and chili flakes. Marinate for at least 1 hour.\n2. Heat oil in a deep pan over medium-high heat.\n3. Dredge the marinated chicken strips in flour, ensuring a full coating.\n4. Fry in hot oil until golden brown and crispy, about 4–5 minutes per batch. Drain on paper towels.\n5. Warm the tortilla wraps in a pan or microwave.\n6. Place lettuce, tomato, onion, and cucumber on each wrap.\n7. Add fried chicken strips, drizzle with mayo or garlic sauce, and add a cheese slice if desired.\n8. Roll the wrap tightly and serve warm.\n";
+}
+string zinger_burger() {// Function that returns the recipe for zinger burger
+	return "Spicy and crispy choice!\nIngredients:\n- 4 chicken fillets (boneless)\n- 1 cup buttermilk\n- 1 cup flour\n- 1 tbsp paprika\n- 1 tsp garlic powder\n- 1 tsp cayenne pepper\n- 1/2 tsp salt\n- 1/2 tsp pepper\n- 4 burger buns\n- Lettuce, tomato, and pickles\n- Mayonnaise for dressing\n- Oil for frying\nInstructions:\n1. Marinate chicken fillets in buttermilk for 1 hour.\n2. In a separate bowl, mix flour, paprika, garlic powder, cayenne pepper, salt, and pepper.\n3. Coat chicken fillets with the flour mixture.\n4. Heat oil in a frying pan and fry chicken fillets until crispy and golden.\n5. Assemble the burger with buns, fried chicken, lettuce, tomato, pickles, and mayonnaise.\n6. Serve hot.\n";
+}
+string smash_burger() {// Function that returns the recipe for smash burger
+	return "Juicy and delicious choice!\nIngredients:\n- 500g ground beef\n- 4 burger buns\n- 1/2 onion (sliced)\n- 4 slices cheese\n- Salt and pepper to taste\n- 2 tbsp mayonnaise\n- 2 tbsp ketchup\nInstructions:\n1. Form the ground beef into 4 patties and season with salt and pepper.\n2. Heat a skillet over medium-high heat, place the patties, and smash them down with a spatula.\n3. Cook for 3-4 minutes on each side until crispy and cooked through.\n4. Toast the buns lightly in the skillet.\n5. Assemble the burgers with mayonnaise, ketchup, onions, cheese, and the cooked patties.\n6. Serve hot.\n";
+}
+string dynamite() {// Function that returns the recipe for dynamite chicken
+	return "Spicy and crispy treat!\nIngredients:\nFor the Chicken:\n- 300g boneless chicken (cut into small cubes)\n- 1/2 tsp salt\n- 1/2 tsp black pepper\n- 1/2 tsp paprika\n- 1/4 tsp garlic powder\n- 2 tbsp cornflour\n- 2 tbsp all-purpose flour\n- 1 egg\n- Oil for frying\nFor the Dynamite Sauce:\n- 1/4 cup mayonnaise\n- 2 tbsp chili garlic sauce or sriracha\n- 1 tbsp ketchup\n- 1 tsp honey (optional)\nInstructions:\n1. In a bowl, season chicken with salt, pepper, paprika, and garlic powder.\n2. Add cornflour, flour, and egg. Mix well to coat the chicken evenly.\n3. Heat oil in a pan and deep fry chicken until golden brown and crispy. Drain on paper towels.\n4. In a separate bowl, mix mayonnaise, chili garlic sauce, ketchup, and honey to make the dynamite sauce.\n5. Toss the fried chicken in the sauce until well coated.\n6. Serve immediately, garnished with spring onions or sesame seeds if desired.\n";
+}
+string rice() {// Function that returns the recipe for singaporian rice
+	return "A flavorful fusion dish!\nIngredients:\nFor the Rice:\n- 2 cups basmati rice\n- 1/2 tsp salt\n- 1 tsp vinegar\n- Water as needed\nFor the Chicken Gravy:\n- 300g boneless chicken (cut into small pieces)\n- 1 onion (chopped)\n- 2 tbsp oil\n- 1 tbsp ginger garlic paste\n- 2 green chilies (sliced)\n- 2 tbsp soy sauce\n- 1 tbsp chili garlic sauce\n- 1/2 tsp black pepper\n- Salt to taste\n- 1/2 cup water\n- 1 tbsp cornflour (mixed in 2 tbsp water)\nFor the Noodles:\n- 1 pack boiled egg noodles\n- 1 tbsp soy sauce\n- 1/2 tsp black pepper\n- 1 tbsp oil\n- 1/2 cup sliced capsicum and carrots\nFor the Mayo Sauce:\n- 1/2 cup mayonnaise\n- 2 tbsp ketchup\n- 1 tbsp chili sauce\n- 1/2 tsp garlic powder\nFor Garnish:\n- Fried garlic\n- Green onions\n- Cabbage (shredded)\nInstructions:\n1. Boil rice with salt and vinegar, then set aside.\n2. In a pan, heat oil, sauté onion and green chilies. Add ginger garlic paste and cook.\n3. Add chicken, soy sauce, chili garlic sauce, salt, pepper, and water. Cook until chicken is done.\n4. Add cornflour slurry to thicken the gravy. Set aside.\n5. In another pan, stir-fry vegetables in oil, add noodles, soy sauce, and pepper. Mix well.\n6. Combine mayo sauce ingredients in a bowl.\n7. To assemble: layer rice, then noodles, top with chicken gravy, drizzle mayo sauce.\n8. Garnish with fried garlic, green onions, and shredded cabbage.\n";
+}
+string loaded_fries() {// Function that returns the recipe for loaded fries
+	return "A fun and indulgent choice!\nIngredients:\n- 4 medium potatoes (cut into fries)\n- 1 cup shredded cheese\n- 1/2 cup cooked bacon (crumbled)\n- 1/4 cup green onions (chopped)\n- 1/4 cup sour cream\n- Salt and pepper to taste\n- Oil for frying\nInstructions:\n1. Fry the potato fries in hot oil until golden and crispy.\n2. Place fries on a baking sheet, sprinkle with cheese and crumbled bacon.\n3. Bake at 200°C (400°F) for 5-7 minutes until cheese is melted.\n4. Top with sour cream and green onions before serving.\n";
+}
+string kebab() {// Function that returns the recipe for cheese stuffed kebab 
+	return "A flavorful grilled choice!\nIngredients:\n- 500g ground beef or chicken\n- 1 onion (finely chopped)\n- 2 cloves garlic (minced)\n- 1 tsp cumin powder\n- 1 tsp paprika\n- 1 tsp coriander powder\n- 1 tbsp parsley (chopped)\n- Salt and pepper to taste\n- Skewers\nInstructions:\n1. Mix ground meat, onion, garlic, spices, parsley, salt, and pepper.\n2. Form the mixture into small sausage-shaped kebabs.\n3. Thread the kebabs onto skewers and grill or cook on a stovetop for 8-10 minutes.\n4. Serve with flatbread and a side of yogurt.\n";
+}
+string sandwhich() {// Function that returns the recipe for sandwich
+	return "A classic quick meal choice!\nIngredients:\n- 2 slices of bread\n- 2 slices cheese\n- 2 slices tomato\n- Lettuce leaves\n- 2 slices cooked chicken or turkey\n- Mayonnaise\nInstructions:\n1. Toast the bread slices lightly.\n2. Spread mayonnaise on one side of each slice.\n3. Layer the cheese, tomato, lettuce, and chicken or turkey on one slice.\n4. Top with the other slice of bread, mayonnaise side down.\n5. Serve immediately.\n";
+}
+string omelette() {// Function that returns the recipe for omelette
+	return "Simple and tasty choice!\nIngredients:\n- 2 eggs\n- 2 tbsp milk\n- 1/4 cup cheese (optional)\n- 1/4 cup bell peppers (chopped)\n- Salt and pepper to taste\n- 1 tbsp butter\nInstructions:\n1. Beat eggs with milk, salt, and pepper.\n2. Heat butter in a pan, add chopped bell peppers and cook for a minute.\n3. Pour in the egg mixture, cook until set, and sprinkle cheese on top (if desired).\n4. Fold the omelette and serve hot.\n";
+}
+string pancakes() {// Function that returns the recipe for pancakes
+	return "A delicious breakfast choice!\nIngredients:\n- 1 cup all-purpose flour\n- 2 tbsp sugar\n- 1 tbsp baking powder\n- 1/4 tsp salt\n- 1 cup milk\n- 1 egg\n- 2 tbsp melted butter\n- 1 tsp vanilla extract\nInstructions:\n1. In a bowl, mix flour, sugar, baking powder, and salt.\n2. In another bowl, whisk together milk, egg, melted butter, and vanilla.\n3. Pour the wet ingredients into the dry ingredients and stir until just combined.\n4. Heat a non-stick pan over medium heat, pour batter, and cook until bubbles form on the surface. Flip and cook until golden.\n5. Serve with syrup or toppings of your choice.\n";
+}
+string nutella_pancakes() {// Function that returns the recipe for nutella pancakes
+	return "A sweet treat choice!\nIngredients:\nFor the Pancake Mix:\n- 1 cup all-purpose flour\n- 2 tbsp sugar\n- 1 tbsp baking powder\n- 1/4 tsp salt\n- 1 cup milk\n- 1 egg\n- 2 tbsp melted butter\n- 1 tsp vanilla extract\nFor the Nutella Pancakes:\n- Nutella (for spreading)\n- Bananas (sliced)\n- Powdered sugar\nInstructions:\n1. In a bowl, mix flour, sugar, baking powder, and salt for the pancake mix.\n2. In another bowl, whisk together milk, egg, melted butter, and vanilla extract.\n3. Pour the wet ingredients into the dry ingredients and stir until just combined.\n4. Heat a non-stick pan over medium heat, pour batter, and cook until bubbles form on the surface. Flip and cook until golden.\n5. Once cooked, spread Nutella on each pancake.\n6. Top with banana slices and a sprinkle of powdered sugar.\n7. Serve hot.\n";
+}
+string cheesecake() {// Function that returns the recipe for cheesecake
+	return "A delicious, indulgent dessert choice!\nIngredients:\nFor the Base:\n- 200g Lotus Biscoff biscuits (crumbled)\n- 100g butter (melted)\nFor the Cheesecake Filling:\n- 500g cream cheese (softened)\n- 200ml heavy cream\n- 1/2 cup sugar\n- 1 tsp vanilla extract\n- 1/4 cup Biscoff spread\n- 1 tbsp powdered sugar\nFor the Topping:\n- 4-5 Lotus Biscoff biscuits (crushed)\n- 3 tbsp Biscoff spread (melted)\nInstructions:\n1. Prepare the base by crushing the Biscoff biscuits into fine crumbs. Mix with melted butter until well combined.\n2. Press the mixture into the bottom of a springform pan to form a firm base. Refrigerate for at least 30 minutes to set.\n3. For the cheesecake filling, beat the cream cheese and sugar together until smooth.\n4. In a separate bowl, whip the heavy cream until stiff peaks form. Gently fold the whipped cream into the cream cheese mixture.\n5. Add the Biscoff spread and vanilla extract, mixing until well combined.\n6. Pour the filling over the prepared base and smooth the top.\n7. Refrigerate the cheesecake for at least 4 hours or overnight to set.\n8. Before serving, drizzle melted Biscoff spread over the top and sprinkle crushed Lotus biscuits.\n9. Serve and enjoy!\n";
+}
+string brownie() {// Function that returns the recipe for Brownie
+	return "Quick and delicious choice!\nIngredients:\n- 1/4 cup all-purpose flour\n- 2 tbsp cocoa powder\n- 3 tbsp sugar\n- 1/8 tsp baking powder\n- Pinch of salt\n- 3 tbsp milk\n- 2 tbsp vegetable oil\n- 1/4 tsp vanilla extract\n- Optional: chocolate chips or nuts\nInstructions:\n1. In a microwave-safe mug, whisk together the flour, cocoa powder, sugar, baking powder, and salt.\n2. Add the milk, vegetable oil, and vanilla extract, and stir until well combined.\n3. Optional: Fold in chocolate chips or nuts for extra texture.\n4. Microwave on high for 1 minute and 30 seconds, or until the brownie has risen and is set in the center.\n5. Let it cool for a minute before enjoying.\n6. Serve warm, optionally topped with a scoop of ice cream.\n";
+}
+string chocolate() {// Function that returns the recipe for chocolate
+	return "Rich and indulgent choice!\nIngredients:\n- 200g dark chocolate (chopped)\n- 100g milk chocolate (chopped)\n- 1/2 cup heavy cream\n- 1 tbsp butter\n- 1 tsp vanilla extract\n- 1/4 cup crushed pistachios\n- 1/4 cup crushed almonds\n- 1/4 cup dried rose petals (optional, for decoration)\nInstructions:\n1. In a heatproof bowl, combine dark chocolate and milk chocolate.\n2. In a small saucepan, heat the heavy cream and butter over medium heat until it begins to simmer.\n3. Pour the hot cream and butter mixture over the chopped chocolate and let it sit for 1-2 minutes.\n4. Stir the mixture until smooth and fully combined, then add the vanilla extract.\n5. Pour the chocolate mixture into a silicone mold or tray and smooth it out.\n6. Sprinkle crushed pistachios, crushed almonds, and dried rose petals on top for decoration.\n7. Let the chocolate set in the refrigerator for at least 2 hours.\n8. Once set, break into pieces and serve.\n";
+}
+string churros() {// Function that returns the recipe for churros 
+	return "A sweet and crispy treat choice!\nIngredients:\nFor the Churros:\n- 1 cup water\n- 2 tbsp sugar\n- 1/2 tsp salt\n- 2 tbsp vegetable oil\n- 1 cup all-purpose flour\n- 2 eggs\n- 1 tsp vanilla extract\n- 1/2 cup sugar (for coating)\n- 1 tsp ground cinnamon\n- Oil for frying\nFor the Chocolate Dip:\n- 100g dark chocolate (chopped)\n- 1/2 cup heavy cream\n- 1 tsp vanilla extract\nInstructions:\n1. In a saucepan, bring water, sugar, salt, and vegetable oil to a boil.\n2. Once boiling, remove from heat and stir in the flour until combined.\n3. Allow the dough to cool slightly, then beat in the eggs and vanilla extract until smooth.\n4. Heat oil in a frying pan or deep fryer to 180°C (350°F).\n5. Transfer the churro dough to a piping bag fitted with a star nozzle.\n6. Pipe strips of dough into the hot oil, cutting them to the desired length. Fry for 2-3 minutes or until golden brown and crispy.\n7. Remove churros from the oil and drain on paper towels.\n8. Mix sugar and cinnamon in a shallow dish. Roll the churros in this cinnamon sugar mixture while still warm.\n9. For the chocolate dip, heat heavy cream in a saucepan until it begins to simmer. Remove from heat and add the chopped dark chocolate, stirring until smooth.\n10. Stir in vanilla extract.\n11. Serve the churros with the warm chocolate dip.\n";
+}
+string garlicSoyChicken() {
+	return "Garlic Soy Chicken:\nIngredients:\n- Chicken\n- Garlic\n- Soy Sauce\nInstructions:\n1. Marinate chicken in soy sauce and minced garlic.\n2. Cook in a pan until chicken is tender and sauce thickens.\n3. Serve with rice.";
+}
+string eggFriedRice() {
+	return "Egg Fried Rice:\nIngredients:\n- Egg\n- Rice\n- Soy Sauce\nInstructions:\n1. Scramble eggs and set aside.\n2. Stir-fry rice in oil with soy sauce and mix in eggs.\n3. Serve hot.";
+}
+string tomatoGarlicPasta() {
+	return "Tomato Garlic Pasta:\nIngredients:\n- Pasta\n- Tomato\n- Garlic\nInstructions:\n1. Cook pasta.\n2. Sauté garlic and tomatoes into a sauce.\n3. Mix with pasta and serve.";
+}
+string chickenCurry() {
+	return "Chicken Curry:\nIngredients:\n- Chicken\n- Onion\n- Tomato\nInstructions:\n1. Cook onion and chicken with spices.\n2. Add tomatoes and simmer.\n3. Serve with rice or naan.";
+}
+string omelettee() {
+	return "Omelette:\nIngredients:\n- Eggs\n- Onion\n- Chili\nInstructions:\n1. Beat eggs with chopped onion and chili.\n2. Cook in pan until done.\n3. Serve hot.";
+}
+string grilledCheeseBread() {
+	return "Grilled Cheese Bread:\nIngredients:\n- Bread\n- Cheese\n- Butter\nInstructions:\n1. Layer cheese between bread slices.\n2. Butter outside and grill.\n3. Cook until golden.";
+}
+string spicyNoodles() {
+	return "Spicy Noodles:\nIngredients:\n- Noodles\n- Chili Sauce\n- Vegetables\nInstructions:\n1. Cook noodles.\n2. Stir-fry with chili sauce and vegetables.\n3. Serve hot.";
+}
+string garlicButterPasta() {
+	return "Garlic Butter Pasta:\nIngredients:\n- Pasta\n- Garlic\n- Butter\nInstructions:\n1. Cook pasta.\n2. Sauté garlic in butter, mix with pasta.\n3. Serve warm.";
+}
+string tomatoBasilBruschetta() {
+	return "Tomato Basil Bruschetta:\nIngredients:\n- Bread\n- Tomato\n- Basil\nInstructions:\n1. Toast bread.\n2. Top with tomato, basil, and olive oil.\n3. Serve as appetizer.";
+}
+string cheeseGarlicToast() {
+	return "Cheese Garlic Toast:\nIngredients:\n- Bread\n- Garlic\n- Cheese\nInstructions:\n1. Spread garlic butter on bread.\n2. Top with cheese and toast.\n3. Serve hot.";
+}
+string chickenMayoSandwich() {
+	return "Chicken Mayo Sandwich:\nIngredients:\n- Chicken\n- Mayonnaise\n- Bread\nInstructions:\n1. Mix shredded chicken with mayo.\n2. Spread on bread.\n3. Serve chilled or grilled.";
+}
+string veggieWrap() {
+	return "Veggie Wrap:\nIngredients:\n- Tortilla\n- Vegetables\n- Sauce\nInstructions:\n1. Fill tortilla with sautéed vegetables and sauce.\n2. Wrap tightly.\n3. Serve warm.";
+}
+string cheeseOmelette() {
+	return "Cheese Omelette:\nIngredients:\n- Eggs\n- Cheese\n- Butter\nInstructions:\n1. Beat eggs, cook halfway.\n2. Add cheese and fold.\n3. Cook until done.";
+}
+string simpleChickenWrap() {
+	return "Simple Chicken Wrap:\nIngredients:\n- Chicken\n- Tortilla\n- Sauce\nInstructions:\n1. Fill tortilla with cooked chicken and sauce.\n2. Roll tightly.\n3. Serve warm.";
+}
+string yogurtDip() {
+	return "Yogurt Dip:\nIngredients:\n- Yogurt\n- Garlic\n- Mint\nInstructions:\n1. Mix yogurt with minced garlic and mint.\n2. Chill and serve as dip.";
+}
+string spicyChickpeas() {
+	return "Spicy Chickpeas:\nIngredients:\n- Chickpeas\n- Onion\n- Spices\nInstructions:\n1. Sauté onion and add boiled chickpeas.\n2. Add spices and cook.\n3. Serve as snack.";
+}
+string honeyChilliFries() {
+	return "Honey Chilli Fries:\nIngredients:\n- Fries\n- Honey\n- Chili Sauce\nInstructions:\n1. Fry or bake potatoes.\n2. Toss with honey and chili sauce.\n3. Serve hot.";
+}
+string bbqChickenSliders() {
+	return "BBQ Chicken Sliders:\nIngredients:\n- Chicken\n- BBQ Sauce\n- Slider Buns\nInstructions:\n1. Mix cooked chicken with BBQ sauce.\n2. Fill slider buns.\n3. Serve warm.";
+}
+string vegStirFry() {
+	return "Veg Stir Fry:\nIngredients:\n- Mixed Vegetables\n- Soy Sauce\n- Garlic\nInstructions:\n1. Stir-fry vegetables with garlic.\n2. Add soy sauce.\n3. Serve as side or main.";
+}
+string chickenQuesadillas() {
+	return "Chicken Quesadillas:\nIngredients:\n- Chicken\n- Cheese\n- Tortilla\nInstructions:\n1. Fill tortilla with chicken and cheese.\n2. Grill until cheese melts.\n3. Cut and serve.";
+}
+string chickenLettuceWraps() {
+	return "Chicken Lettuce Wraps:\nIngredients:\n- Chicken\n- Lettuce\n- Sauce\nInstructions:\n1. Cook chicken with sauce.\n2. Serve in lettuce leaves.\n3. Eat as wrap.";
+}
+string spicyBakedPotatoes() {
+	return "Spicy Baked Potatoes:\nIngredients:\n- Potatoes\n- Spices\n- Olive Oil\nInstructions:\n1. Cut potatoes, season with spices.\n2. Bake until crisp.\n3. Serve hot.";
+}
+string cheesyPotatoBites() {
+	return "Cheesy Potato Bites:\nIngredients:\n- Potatoes\n- Cheese\n- Bread Crumbs\nInstructions:\n1. Mix mashed potatoes with cheese.\n2. Shape, coat, and fry or bake.\n3. Serve warm.";
+}
+int main() {
+	main_work();    // Calling the main_work function to execute the main logic of the recipe book program so that main function is just a function driver.
+	cout << "                                          -------------------------------------------------------------------------" << endl;
+	cout << right << setw(107) << "GOODBYE I HOPE I MET ALL OF YOUR REQUIREMENTS,THANK YOU!" << endl;
+	cout << "                                          -------------------------------------------------------------------------" << endl;
+	return 0;
+}
